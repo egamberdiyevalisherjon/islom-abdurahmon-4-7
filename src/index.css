@@ -1,0 +1,12 @@
+#main-header {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#landing-showcase {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/showcase.jpg) center / cover;
+  min-height: calc(100vh - 70px);
+}

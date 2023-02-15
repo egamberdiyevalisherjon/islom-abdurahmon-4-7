@@ -9,7 +9,7 @@ const HeaderLink = ({ children, className = "", ...rest }) => (
 
 const Header = () => {
   return (
-    <header className="text-bg-secondary py-3 border-bottom border-2 border-info">
+    <header id="main-header" className="text-bg-secondary py-3 border-bottom border-2 border-info">
       <nav className="container-fluid px-5 d-flex justify-content-between align-items-center">
         <HeaderLink to="/" className="fs-4">
           <i className="fa-solid fa-code"></i> DevConnector
