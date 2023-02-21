@@ -78,7 +78,7 @@ const Profiles = () => {
                     {profile.status} at {profile.company}
                   </p>
                   <Link
-                    to={`/profiles/${profile._id}`}
+                    to={`/profiles/${profile.user._id}`}
                     className="btn btn-info"
                   >
                     View Profile
