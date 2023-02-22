@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { loadUserData } from "../store/slices/user";
 
@@ -10,6 +10,7 @@ const CreateProfile = () => {
   const [open, setOpen] = useState(false);
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   async function handleCreateProfile(data) {
     if (!data.status) return toast("Status is required!", { type: "error" });
@@ -18,6 +19,8 @@ const CreateProfile = () => {
     try {
       let { data: user } = await axios.post("/profile", data);
       dispatch(loadUserData(user));
+      toast("Profile created!", { type: "success" });
+      navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
