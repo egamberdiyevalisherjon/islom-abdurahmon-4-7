@@ -19,6 +19,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 // Redux
 import { Provider } from "react-redux";
+import store from "./store";
 
 // Styles
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -27,7 +28,9 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Router>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
     <ToastContainer theme="colored" />
   </Router>
 );
