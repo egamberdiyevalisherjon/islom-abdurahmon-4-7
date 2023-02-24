@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../Components/Loader";
 import PostForm from "../Components/PostForm";
 import PostListItem from "../Components/PostListItem";
 import useFetch from "../Hooks/useFetch";
@@ -33,7 +34,7 @@ const Posts = () => {
       <PostForm newPost={newPost} />
 
       {!data ? (
-        <h2 className="display-1">Loading...</h2>
+        <Loader />
       ) : (
         <div className="d-flex flex-column gap-3">
           {posts.map((post) => {

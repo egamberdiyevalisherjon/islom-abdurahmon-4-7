@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
 const PostListItem = ({ post, deletePost }) => {
   const [postLikes, setPostLikes] = useState(post.likes.length);
+
+  const navigate = useNavigate();
 
   const { info } = useSelector(({ user }) => user);
 
@@ -33,8 +35,9 @@ const PostListItem = ({ post, deletePost }) => {
     try {
       let { data } = await axios.delete(`/posts/${id}`);
 
-      console.log(data);
-      deletePost(id);
+      toast(data.msg, { type: "success" });
+      deletePost?.(id);
+      navigate("/posts");
     } catch (error) {}
   }
 
@@ -62,7 +65,12 @@ const PostListItem = ({ post, deletePost }) => {
             <i className="fa-solid fa-thumbs-down"></i>
           </button>
           <Link to={`/posts/${post._id}`} className="btn btn-info">
-            Discussion
+            Discussion{" "}
+            {post.comments.length > 0 && (
+              <span className="badge text-bg-light">
+                {post.comments.length}
+              </span>
+            )}
           </Link>
           {info && info.user._id === post.user && (
             <button
