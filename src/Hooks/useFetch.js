@@ -21,8 +21,6 @@ function useFetch(url, method = "get") {
 
         if (unmounted) return;
 
-        console.log(data);
-
         setData(res.data);
         setLoading(false);
       } catch (error) {

@@ -3,7 +3,7 @@ import useFetch from "../Hooks/useFetch";
 
 const Repos = ({ username }) => {
   const { data: repos } = useFetch(`/profile/github/${username}`);
-  console.log(repos);
+
   return (
     repos && (
       <section className="my-3">

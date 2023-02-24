@@ -8,8 +8,6 @@ const Profile = () => {
   const { id } = useParams();
   const { loading, data: profile } = useFetch(`/profile/user/${id}`, "get");
 
-  console.log(profile);
-
   return (
     <div>
       <div className="container py-5">
